@@ -19,12 +19,11 @@ The goals / steps of this project are the following:
 
 [image1]: ./img/camera_cal.png "Camera Calibration"
 [image2]: ./img/distortion_correction.png "distortion correction"
-[image3]: ./img/color_transforms_gradients.png "color transforms gradients"
-[image4]: ./img/region_of_interest.png "region of interest"
-[image5]: ./img/perspective_transform.png "perspective transform"
-[image6]: ./img/histogram_of_image.png "histogram of image"
-[image7]: ./img/curvature_of_lane.png "curvature of lane"
-[image8]: ./img/result.jpg "result"
+[image3]: ./img/perspective_transform.png "perspective transform"
+[image4]: ./img/color_transforms_gradients.png "color transforms gradients"
+[image5]: ./img/histogram_of_image.png "histogram of image"
+[image6]: ./img/curvature_of_lane.png "curvature of lane"
+[image7]: ./img/result.jpg "result"
 
 ---
 
@@ -47,7 +46,21 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 Use `cv2.undistort` and r`camera matrix & distortion coefficients` which get from camera calibration make original image to undistorted image
 ![alt text][image2]
 
-#### 2. Use color transforms, gradients, etc., to create a thresholded binary image.
+
+#### 2. Apply a perspective transform to rectify binary image ("birds-eye view").
+
+The code for my perspective transform includes a function called `perspective_transform()`, which appears in lines 106 through 110 in the file `utils/helper.py`.  The `perspective_transform()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+
+```python
+offset = 300
+w, h = img.shape[1], img.shape[0]
+dst = np.float32([[offset, 0], [w - offset, 0], [offset, h], [w - offset, h]])
+src = np.float32([(582, 460), (705, 460), (260, 680), (1050, 680)])
+```
+
+![alt text][image3]
+
+#### 3. Use color transforms, gradients, etc., to create a thresholded binary image.
 
 * Limit magnitude of the gradient
 
@@ -62,43 +75,18 @@ dir_thresh=(0, np.pi/32)
 s_thresh=(180, 255)
 ```
 
-![alt text][image3]
-
-#### 3. select region of interest.
-
-Only onsider a part of iamge, the vertices of region of interest are as follow:
-```python
-vertices = np.array([[(550, 450),
-                      (750, 450),
-                      (1120, 700),
-                      (180, 700)]], dtype=np.int32)
-```
-
 ![alt text][image4]
 
-#### 4. Apply a perspective transform to rectify binary image ("birds-eye view").
-
-The code for my perspective transform includes a function called `perspective_transform()`, which appears in lines 106 through 110 in the file `utils/helper.py`.  The `perspective_transform()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
-
-```python
-offset = 300
-w, h = img.shape[1], img.shape[0]
-dst = np.float32([[offset, 0], [w - offset, 0], [offset, h], [w - offset, h]])
-src = np.float32([(582, 460), (705, 460), (260, 680), (1050, 680)])
-```
-
-![alt text][image5]
-
-#### 5. Determine the curvature of the lane and vehicle position with respect to center.
+#### 4. Determine the curvature of the lane and vehicle position with respect to center.
 
 * Get histogram of image and use that to determine the vehicle position with respect to center
-![alt text][image6]
+![alt text][image5]
 
 * Use slide windows to determine curvature of the lane
-![alt text][image7]
+![alt text][image6]
 
 * Plot the information on the original image
-![alt text][image8]
+![alt text][image7]
 
 
 
