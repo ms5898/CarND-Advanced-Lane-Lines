@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="381fc633-feb7-4105-9348-11f4e3e6eb28" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Process_on_image.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Process_on_image.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Process_on_video.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Process_on_video.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Show process .ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Show process .ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/straight_lines1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/straight_lines1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/straight_lines2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/straight_lines2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/test1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/test1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/test2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/test2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/test3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/test3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/test4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/test4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/test5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/test5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_images/test_images_output/test6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_images_output/test6.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output_images/test_videos_output/project_video.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/output_images/test_videos_output/project_video.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/pipeline.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
