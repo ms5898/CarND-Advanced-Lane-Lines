@@ -90,7 +90,15 @@ src = np.float32([(582, 460), (705, 460), (260, 680), (1050, 680)])
 ![alt text][image5]
 
 #### 5. Determine the curvature of the lane and vehicle position with respect to center.
+
+* Get histogram of image and use that to determine the vehicle position with respect to center
 ![alt text][image6]
+
+* Use slide windows to determine curvature of the lane
+![alt text][image7]
+
+* Plot the information on the original image
+![alt text][image8]
 
 
 
