@@ -1,6 +1,5 @@
 ## Advanced Lane Finding
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
-![Lanes Image](./examples/example_output.jpg)
+Mingfei Sun
 
 The Project
 ---
@@ -20,7 +19,7 @@ Usage
 ---
 
 * Project report is [`REPPORT.md`](./REPPORT.md)
-* The detailed application process is [`Show process .ipynb`](./Show_process.ipynb)
+* The detailed application process is [`Show_process.ipynb`](./Show_process.ipynb)
 * Experiment on the images [`Process_on_image.ipynb`](./Process_on_image.ipynb)
 * Experiment on the video [`Process_on_video.ipynb`](./Process_on_video.ipynb)
 
