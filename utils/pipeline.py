@@ -8,13 +8,12 @@ import pickle
 from utils.helper import *
 
 class Pipeline:
-    def __init__(self, mtx, dist, sx_thresh, dir_thresh, s_thresh, vertices):
+    def __init__(self, mtx, dist, sx_thresh, dir_thresh, s_thresh):
         self.mtx = mtx
         self.dist = dist
         self.sx_thresh = sx_thresh
         self.dir_thresh = dir_thresh
         self.s_thresh = s_thresh
-        self.vertices = vertices
         self.detected = False
         self.left_fit = None
         self.right_fit = None
@@ -22,34 +21,29 @@ class Pipeline:
 
     def pipeline(self, img):
         dst_img = dis_cor(img, self.mtx, self.dist)
-        combined_binary = grad_col_threshold(dst_img, self.sx_thresh, self.dir_thresh, self.s_thresh)
-        combined_binary = region_of_interest(combined_binary, self.vertices)
 
         offset = 300
-        w, h = combined_binary.shape[1], combined_binary.shape[0]
+        w, h = dst_img.shape[1], dst_img.shape[0]
         dst = np.float32([[offset, 0], [w - offset, 0], [offset, h], [w - offset, h]])
         src = np.float32([(582, 460), (705, 460), (260, 680), (1050, 680)])
-        warped = perspective_transform(combined_binary, src, dst)
-        '''
-        img_show = np.dstack((combined_binary, combined_binary, combined_binary)) * 255
-        cv2.line(img_show, (src[0][0], src[0][1]), (src[1][0], src[1][1]), [255, 0, 0], 2)
-        cv2.line(img_show, (src[1][0], src[1][1]), (src[3][0], src[3][1]), [255, 0, 0], 2)
-        cv2.line(img_show, (src[0][0], src[0][1]), (src[2][0], src[2][1]), [255, 0, 0], 2)
-        cv2.line(img_show, (src[2][0], src[2][1]), (src[3][0], src[3][1]), [255, 0, 0], 2)
-        '''
+        warped = perspective_transform(dst_img, src, dst)
+
+        warped = grad_col_threshold(warped, self.sx_thresh, self.dir_thresh, self.s_thresh)
 
         # Define conversions in x and y from pixels space to meters
         ym_per_pix = 30 / 720  # meters per pixel in y dimension
         xm_per_pix = 3.7 / 700  # meters per pixel in x dimension
 
         if self.detected:
-            left_fit, right_fit, left_curverad, right_curverad, left_fitx, right_fitx, ploty = search_around_poly(warped, self.left_fit, self.right_fit, ym_per_pix, xm_per_pix)
+            left_fit, right_fit, left_curverad, right_curverad, left_fitx, right_fitx, ploty = search_around_poly(
+                warped, self.left_fit, self.right_fit, ym_per_pix, xm_per_pix)
             self.left_fit = left_fit
             self.right_fit = right_fit
 
         else:
             # use slide windows
-            out_img, left_fit, right_fit, left_curverad, right_curverad, left_fitx, right_fitx, ploty = fit_polynomial(warped, ym_per_pix, xm_per_pix)
+            out_img, left_fit, right_fit, left_curverad, right_curverad, left_fitx, right_fitx, ploty = fit_polynomial(
+                warped, ym_per_pix, xm_per_pix)
             self.left_fit = left_fit
             self.right_fit = right_fit
 
@@ -58,7 +52,6 @@ class Pipeline:
             self.detected = False
         else:
             self.detected = True
-
 
         # Create an image to draw the lines on
         warp_zero = np.zeros_like(warped).astype(np.uint8)
